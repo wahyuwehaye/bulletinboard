@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${post.title}">Post Detail</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 th:text="${post.title}"></h1>
+    <p>
+      <strong>Author:</strong> <span th:text="${post.author}"></span> |
+      <strong>View Count:</strong> <span th:text="${post.viewCount}"></span> |
+      <strong>Created At:</strong> <span th:text="${#dates.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+      <span th:if="${post.updatedAt != null}">
+        | <strong>Updated At:</strong> <span th:text="${#dates.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}"></span>
+      </span>
+    </p>
+    <hr>
+    <div th:utext="${post.content}"></div>
+    <hr>
+    <a class="btn btn-secondary" href="/posts">List</a>
+    <a class="btn btn-warning" th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a>
+    
+    <form th:action="@{'/posts/' + ${post.id} + '/delete'}" method="post" style="display:inline-block;">
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit" class="btn btn-danger">Submit</button>
+    </form>
+  </div>
+  <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

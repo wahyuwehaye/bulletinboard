@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Buat postingan baru</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>Buat postingan baru</h1>
+    <form th:action="@{/posts}" method="post">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" maxlength="100" required>
+      </div>
+      <div class="mb-3">
+        <label for="author" class="form-label">Author/label>
+        <input type="text" class="form-control" id="author" name="author" maxlength="10" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control" id="content" name="content" rows="6" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <a class="btn btn-secondary" href="/posts">List</a>
+    </form>
+  </div>
+  <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

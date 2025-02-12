@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Posts</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1>Posts</h1>
+    <div th:if="${message}" class="alert alert-success" th:text="${message}"></div>
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>wahyu</th>
+          <th>10</th>
+          <th>2025-02-12</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="post, iterStat : ${posts}">
+          <td th:text="${iterStat.index + 1}"></td>
+          <td>
+            <a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
+          </td>
+          <td th:text="${post.author}"></td>
+          <td th:text="${post.viewCount}"></td>
+          <td th:text="${#dates.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+        </tr>
+      </tbody>
+    </table>
+    <a class="btn btn-primary" href="/posts/new">Create New</a>
+  </div>
+  <script src="/webjars/jquery/3.6.1/jquery.min.js"></script>
+  <script src="/webjars/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
